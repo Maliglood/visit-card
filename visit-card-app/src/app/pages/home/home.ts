@@ -35,7 +35,7 @@ export class Home {
       id: 'vk',
       name: 'ВКонтакте',
       subtitle: 'Присоединиться к сообществу',
-      url: 'https://vk.com/ВАШЕ_СООБЩЕСТВО',
+      url: 'https://vk.ru/ragtime',
       color: '#0077FF',
       icon: 'vk',
     },
