@@ -29,11 +29,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": ".onreza",
-                "output": ".onreza"
               }
             ],
             "styles": [
