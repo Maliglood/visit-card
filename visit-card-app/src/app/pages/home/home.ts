@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-type MessengerIcon = 'max' | 'instagram' | 'telegram';
+type MessengerIcon = 'max' | 'instagram' | 'telegram' | 'vk';
 
 interface MessengerLink {
   id: string;
@@ -30,6 +30,14 @@ export class Home {
       url: 'https://max.ru/join/IrZZDhsZZSYq55BRj9a9rCH7-z78oJOKn2kN4wIaBok',
       color: '#6E3BFF',
       icon: 'max',
+    },
+    {
+      id: 'vk',
+      name: 'ВКонтакте',
+      subtitle: 'Присоединиться к сообществу',
+      url: 'https://vk.com/ВАШЕ_СООБЩЕСТВО',
+      color: '#0077FF',
+      icon: 'vk',
     },
     {
       id: 'instagram',

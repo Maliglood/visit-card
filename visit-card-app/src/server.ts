@@ -47,6 +47,10 @@ app.use((req, res, next) => {
     .catch(next);
 });
 
+console.log('[DEBUG] NG_ALLOWED_HOSTS =', process.env['NG_ALLOWED_HOSTS']);
+console.log('[DEBUG] Все env-ключи с ALLOWED:',
+  Object.keys(process.env).filter(k => k.includes('ALLOWED')));
+
 /**
  * Start the server if this module is the main entry point, or it is ran via PM2.
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
