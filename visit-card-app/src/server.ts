@@ -10,9 +10,14 @@ import { join } from 'node:path';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine({
-  allowedHosts: ['localhost', '127.0.0.1', '0.0.0.0'],
-});
+
+// app.use((req, res, next) => {
+//   console.log('[DEBUG] Incoming Host header =', req.headers.host);
+//   console.log('[DEBUG] X-Forwarded-Host =', req.headers['x-forwarded-host']);
+//   next();
+// });
+
+const angularApp = new AngularNodeAppEngine();
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -47,9 +52,9 @@ app.use((req, res, next) => {
     .catch(next);
 });
 
-console.log('[DEBUG] NG_ALLOWED_HOSTS =', process.env['NG_ALLOWED_HOSTS']);
-console.log('[DEBUG] Все env-ключи с ALLOWED:',
-  Object.keys(process.env).filter(k => k.includes('ALLOWED')));
+// console.log('[DEBUG] NG_ALLOWED_HOSTS =', process.env['NG_ALLOWED_HOSTS']);
+// console.log('[DEBUG] Все env-ключи с ALLOWED:',
+//   Object.keys(process.env).filter(k => k.includes('ALLOWED')));
 
 /**
  * Start the server if this module is the main entry point, or it is ran via PM2.
