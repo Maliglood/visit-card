@@ -1,0 +1,59 @@
+<div class="page">
+    <main class="card">
+        <header class="profile">
+            <div class="avatar" aria-hidden="true">
+                <img src="avatar.png" alt="" width="130" height="130" />
+            </div>
+            <h1 class="title">{{ title }}</h1>
+            <p class="subtitle">{{ subtitle }}</p>
+        </header>
+
+        <nav class="links" aria-label="Мессенджеры">
+            @for (link of links; track link.id) {
+            <a class="link" [href]="link.url" target="_blank" rel="noopener noreferrer" [style.--accent]="link.color"
+                [attr.aria-label]="link.name + ' — ' + link.subtitle">
+                <span class="link__icon" aria-hidden="true">
+                    @switch (link.icon) {
+                    @case ('max') {
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.4 5.48 3.6 7.16V22l3.3-1.83c1 .28 2.05.43 3.1.43 5.52 0 10-4.13 10-9.2S17.52 2 12 2z" />
+                    </svg>
+                    }
+                    @case ('instagram') {
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" />
+                    </svg>
+                    }
+                    @case ('telegram') {
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                        <path
+                            d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
+                    </svg>
+                    }
+                    }
+                </span>
+
+                <span class="link__text">
+                    <span class="link__name">{{ link.name }}</span>
+                    <span class="link__subtitle">{{ link.subtitle }}</span>
+                </span>
+
+                <span class="link__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </span>
+            </a>
+            }
+        </nav>
+
+        <footer class="footer">
+            <p class="footer__note">{{ instagramNote }}</p>
+            <p class="footer__disclaimer">{{ disclaimer }}</p>
+            <p class="footer__copyright">© {{ year }} {{ title }}</p>
+        </footer>
+    </main>
+</div>

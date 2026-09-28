@@ -1,0 +1,227 @@
+:host {
+    display: block;
+    min-height: 100dvh;
+}
+
+/* Все дочерние элементы компонента считают padding внутри width */
+:host *,
+:host *::before,
+:host *::after {
+    box-sizing: border-box;
+}
+
+/* -------- Страница-обёртка -------- */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: #f4f5f7;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* -------- Карточка по центру -------- */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: 32px 20px 24px;
+    gap: 32px;
+}
+
+/* -------- Шапка -------- */
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding-top: 16px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.subtitle {
+    margin: 0;
+    max-width: 280px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #6b7280;
+}
+
+/* -------- Список кнопок -------- */
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 64px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: var(--accent, #333333);
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.link:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
+}
+
+.link:focus-visible {
+    outline: 3px solid #1a1a1a;
+    outline-offset: 3px;
+}
+
+.link__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.link__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.link__name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.link__subtitle {
+    font-size: 13px;
+    line-height: 1.3;
+    opacity: 0.85;
+}
+
+.link__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* -------- Подвал -------- */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 24px;
+    text-align: center;
+}
+
+.footer__note,
+.footer__disclaimer,
+.footer__copyright {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #9ca3af;
+}
+
+.footer__note,
+.footer__disclaimer {
+    font-style: italic;
+}
+
+.footer__copyright {
+    margin-top: 6px;
+}
+
+/* -------- Планшеты и десктоп -------- */
+
+@media (min-width: 600px) {
+    .card {
+        padding: 48px 24px 32px;
+        gap: 40px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .link {
+        min-height: 72px;
+        padding: 16px 20px;
+    }
+
+    .link__icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .link__name {
+        font-size: 17px;
+    }
+
+    .link__subtitle {
+        font-size: 14px;
+    }
+}
+
+/* -------- Уважение к reduced-motion -------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .link,
+    .link:active {
+        transition: none;
+        transform: none;
+    }
+}
