@@ -15,7 +15,12 @@
     ],
     "routes": [
         {
-            "pattern": "/.*",
+            "pattern": "^/.*\\..*$",
+            "layer": "static",
+            "priority": 50
+        },
+        {
+            "pattern": "^/.*$",
             "layer": "server",
             "priority": 0
         }
