@@ -1,0 +1,22 @@
+{
+    "layers": [
+        {
+            "name": "static",
+            "target": "STATIC",
+            "directory": "browser"
+        },
+        {
+            "name": "server",
+            "target": "COMPUTE",
+            "directory": "server",
+            "entry": "server.mjs"
+        }
+    ],
+    "routes": [
+        {
+            "pattern": "/.*",
+            "layer": "server",
+            "priority": 0
+        }
+    ]
+}
