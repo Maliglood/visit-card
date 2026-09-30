@@ -10,8 +10,7 @@
 
         <nav class="links" aria-label="Мессенджеры">
             @for (link of links; track link.id) {
-            <a class="link" [class.is-hidden]="link.id === 'instagram'" [href]="link.url" target="_blank"
-                rel="noopener noreferrer" [style.--accent]="link.color"
+            <a class="link" [href]="link.url" target="_blank" rel="noopener noreferrer" [style.--accent]="link.color"
                 [attr.aria-label]="link.name + ' — ' + link.subtitle">
                 <span class="link__icon" aria-hidden="true">
                     @switch (link.icon) {
@@ -58,8 +57,8 @@
         </nav>
 
         <footer class="footer">
-            <p class="footer__note is-hidden">{{ instagramNote }}</p>
-            <p class="footer__disclaimer is-hidden">{{ disclaimer }}</p>
+            <p class="footer__note">{{ instagramNote }}</p>
+            <p class="footer__disclaimer">{{ disclaimer }}</p>
             <p class="footer__copyright">© {{ year }} {{ title }}</p>
         </footer>
     </main>

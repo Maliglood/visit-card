@@ -43,7 +43,7 @@ export class Home {
       id: 'instagram',
       name: 'Instagram',
       subtitle: 'Присоединиться к каналу',
-      url: 'https://instagram.com/ВАШ_КАНАЛ',
+      url: 'https://www.instagram.com/jazzragtime?stkn=YmFtcHlpbGh1c3lt',
       color: '#E1306C',
       icon: 'instagram',
     },
