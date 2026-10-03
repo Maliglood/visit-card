@@ -1,65 +1,138 @@
 <div class="page">
     <main class="card">
-        <header class="profile">
-            <div class="avatar" aria-hidden="true">
-                <img src="avatar.png" alt="" width="130" height="130" />
+
+        <!-- ВЕРХНЯЯ ЧАСТЬ: Логотип и Оверлей -->
+        <header class="top-section">
+            <div class="logo" aria-hidden="true">
+                <!-- Твой логотип -->
+                <img src="/images/logo.png" alt="Логотип" />
             </div>
-            <h1 class="title">{{ title }}</h1>
-            <p class="subtitle">{{ subtitle }}</p>
+            <div class="categories-overlay" aria-hidden="true">
+                <!-- Твой прозрачный PNG с надписями Lady, Teens, Baby и т.д. -->
+                <img src="/images/categories-overlay.png" />
+            </div>
         </header>
 
-        <nav class="links" aria-label="Мессенджеры">
-            @for (link of links; track link.id) {
-            <a class="link" [href]="link.url" target="_blank" rel="noopener noreferrer" [style.--accent]="link.color"
-                [attr.aria-label]="link.name + ' — ' + link.subtitle">
-                <span class="link__icon" aria-hidden="true">
-                    @switch (link.icon) {
-                    @case ('max') {
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                        <path
-                            d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.4 5.48 3.6 7.16V22l3.3-1.83c1 .28 2.05.43 3.1.43 5.52 0 10-4.13 10-9.2S17.52 2 12 2z" />
-                    </svg>
-                    }
-                    @case ('vk') {
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                        <path
-                            d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.071.587-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.262-.212.262s-.382 1.03-.89 1.907c-1.07 1.85-1.499 1.948-1.674 1.832-.407-.267-.305-1.075-.305-1.649 0-1.793.267-2.54-.521-2.733-.262-.065-.454-.107-1.123-.114-.858-.009-1.585.003-1.996.208-.274.136-.485.44-.356.457.159.022.519.099.71.363.246.341.237 1.107.237 1.107s.142 2.11-.33 2.371c-.325.18-.77-.187-1.725-1.865-.489-.859-.859-1.81-.859-1.81s-.072-.176-.2-.27c-.154-.115-.371-.151-.371-.151l-2.287.015s-.343.01-.469.161c-.112.135-.009.413-.009.413s1.79 4.258 3.817 6.403c1.858 1.967 3.968 1.838 3.968 1.838z" />
-                    </svg>
-                    }
-                    @case ('instagram') {
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                        <path
-                            d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" />
-                    </svg>
-                    }
-                    @case ('telegram') {
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                        <path
-                            d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
-                    </svg>
-                    }
-                    }
-                </span>
+        <!-- НИЖНЯЯ ЧАСТЬ: Заголовок, кнопки, события -->
+        <div class="bottom-section">
 
-                <span class="link__text">
-                    <span class="link__name">{{ link.name }}</span>
-                    <span class="link__subtitle">{{ link.subtitle }}</span>
-                </span>
+            <!-- Главный заголовок (Неон) -->
+            <div class="hero">
+                <h1 class="hero-title">
+                    <span class="title-white">СТУДИЯ</span>
+                    <span class="title-yellow">ДЖАЗ ВОКАЛА</span>
+                    <span class="title-cyan">РЭГТАЙМ</span>
+                </h1>
+            </div>
 
-                <span class="link__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                </span>
-            </a>
-            }
-        </nav>
+            <!-- Кнопка записи -->
+            <button class="cta-button">
+                Записаться на пробное занятие
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
 
-        <footer class="footer">
-            <p class="footer__note">{{ instagramNote }}</p>
-            <p class="footer__disclaimer">{{ disclaimer }}</p>
-            <p class="footer__copyright">© {{ year }} {{ title }}</p>
-        </footer>
+            <!-- Социальные сети -->
+            <section class="socials-section">
+                <p class="socials-title">Выберите мессенджер, чтобы присоединиться</p>
+                <nav class="links" aria-label="Мессенджеры">
+                    @for (link of links; track link.id) {
+                    <a class="link" [href]="link.url" target="_blank" rel="noopener noreferrer"
+                        [style.--accent]="link.color" [attr.aria-label]="link.name">
+                        <span class="link__icon" aria-hidden="true">
+                            @switch (link.icon) {
+                            @case ('max') { <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <path
+                                    d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.4 5.48 3.6 7.16V22l3.3-1.83c1 .28 2.05.43 3.1.43 5.52 0 10-4.13 10-9.2S17.52 2 12 2z" />
+                            </svg> }
+                            @case ('vk') { <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <path
+                                    d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.071.587-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.262-.212.262s-.382 1.03-.89 1.907c-1.07 1.85-1.499 1.948-1.674 1.832-.407-.267-.305-1.075-.305-1.649 0-1.793.267-2.54-.521-2.733-.262-.065-.454-.107-1.123-.114-.858-.009-1.585.003-1.996.208-.274.136-.485.44-.356.457.159.022.519.099.71.363.246.341.237 1.107.237 1.107s.142 2.11-.33 2.371c-.325.18-.77-.187-1.725-1.865-.489-.859-.859-1.81-.859-1.81s-.072-.176-.2-.27c-.154-.115-.371-.151-.371-.151l-2.287.015s-.343.01-.469.161c-.112.135-.009.413-.009.413s1.79 4.258 3.817 6.403c1.858 1.967 3.968 1.838 3.968 1.838z" />
+                            </svg> }
+                            @case ('instagram') { <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <path
+                                    d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.23 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" />
+                            </svg> }
+                            @case ('telegram') { <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <path
+                                    d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
+                            </svg> }
+                            }
+                        </span>
+                        <span class="link__name">{{ link.name }}</span>
+                    </a>
+                    }
+                </nav>
+            </section>
+
+            <!-- Ближайшие события -->
+            <section class="events-section">
+                <div class="events-header">
+                    <h2>Ближайшие события</h2>
+                    <a href="#" class="events-link">Смотреть все <span>→</span></a>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="event-day">{{ upcomingEvent.day }}</span>
+                        <span class="event-month">{{ upcomingEvent.month }}</span>
+                    </div>
+                    <div class="event-info">
+                        <h3>{{ upcomingEvent.title }}</h3>
+                        <p>{{ upcomingEvent.subtitle }}</p>
+                    </div>
+                    <div class="event-arrow">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+        </div> <!-- Конец bottom-section -->
     </main>
+
+    <!-- Нижнее горизонтальное меню (остаётся без изменений) -->
+    <nav class="bottom-nav" aria-label="Основная навигация">
+        @for (item of navItems; track item.id) {
+        <a class="nav-item" [class.active]="item.active" [href]="item.url">
+            <span class="nav-icon" aria-hidden="true">
+                @switch (item.icon) {
+                @case ('home') { <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg> }
+                @case ('about') { <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg> }
+                @case ('schedule') { <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                </svg> }
+                @case ('prices') { <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                    <line x1="12" y1="18" x2="12" y2="22" />
+                    <line x1="12" y1="2" x2="12" y2="6" />
+                </svg> }
+                @case ('contacts') { <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg> }
+                }
+            </span>
+            <span class="nav-label">{{ item.name }}</span>
+        </a>
+        }
+    </nav>
 </div>

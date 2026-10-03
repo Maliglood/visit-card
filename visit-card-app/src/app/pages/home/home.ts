@@ -1,14 +1,29 @@
 import { Component } from '@angular/core';
 
 type MessengerIcon = 'max' | 'instagram' | 'telegram' | 'vk';
+type NavIcon = 'home' | 'about' | 'schedule' | 'prices' | 'contacts';
 
 interface MessengerLink {
   id: string;
   name: string;
-  subtitle: string;
   url: string;
   color: string;
   icon: MessengerIcon;
+}
+
+interface NavItem {
+  id: string;
+  name: string;
+  icon: NavIcon;
+  url: string;
+  active?: boolean;
+}
+
+interface EventItem {
+  day: string;
+  month: string;
+  title: string;
+  subtitle: string;
 }
 
 @Component({
@@ -19,49 +34,25 @@ interface MessengerLink {
   styleUrl: './home.scss',
 })
 export class Home {
-  readonly title = 'Студия джаз вокала Рэгтайм';
-  readonly subtitle = 'Выберите мессенджер, чтобы присоединиться';
-
   readonly links: readonly MessengerLink[] = [
-    {
-      id: 'max',
-      name: 'MAX',
-      subtitle: 'Присоединиться к каналу',
-      url: 'https://max.ru/join/IrZZDhsZZSYq55BRj9a9rCH7-z78oJOKn2kN4wIaBok',
-      color: '#6E3BFF',
-      icon: 'max',
-    },
-    {
-      id: 'vk',
-      name: 'ВКонтакте',
-      subtitle: 'Присоединиться к сообществу',
-      url: 'https://vk.ru/ragtime',
-      color: '#0077FF',
-      icon: 'vk',
-    },
-    {
-      id: 'instagram',
-      name: 'Instagram',
-      subtitle: 'Присоединиться к каналу',
-      url: 'https://www.instagram.com/jazzragtime?stkn=YmFtcHlpbGh1c3lt',
-      color: '#E1306C',
-      icon: 'instagram',
-    },
-    {
-      id: 'telegram',
-      name: 'Telegram',
-      subtitle: 'Присоединиться к каналу',
-      url: 'https://t.me/jazzragtime',
-      color: '#229ED9',
-      icon: 'telegram',
-    },
+    { id: 'max', name: 'MAX', url: 'https://max.ru/join/IrZZDhsZZSYq55BRj9a9rCH7-z78oJOKn2kN4wIaBok', color: '#6E3BFF', icon: 'max' },
+    { id: 'vk', name: 'ВКонтакте', url: 'https://vk.ru/ragtime', color: '#0077FF', icon: 'vk' },
+    { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/jazzragtime?stkn=YmFtcHlpbGh1c3lt', color: '#E1306C', icon: 'instagram' },
+    { id: 'telegram', name: 'Telegram', url: 'https://t.me/jazzragtime', color: '#229ED9', icon: 'telegram' },
   ];
 
-  readonly instagramNote = '* Instagram запрещён на территории РФ.';
+  readonly navItems: readonly NavItem[] = [
+    { id: 'home', name: 'Главная', icon: 'home', url: '#', active: true },
+    { id: 'about', name: 'О нас', icon: 'about', url: '#' },
+    { id: 'schedule', name: 'Расписание', icon: 'schedule', url: '#' },
+    { id: 'prices', name: 'Цены', icon: 'prices', url: '#' },
+    { id: 'contacts', name: 'Контакты', icon: 'contacts', url: '#' },
+  ];
 
-  readonly disclaimer =
-    '* Деятельность Meta Platforms Inc. (социальные сети Facebook и Instagram) ' +
-    'признана экстремистской и запрещена на территории Российской Федерации.';
-
-  readonly year = new Date().getFullYear();
+  readonly upcomingEvent: EventItem = {
+    day: '12',
+    month: 'апр',
+    title: 'Открытый урок',
+    subtitle: 'Познакомьтесь со студией и преподавателями'
+  };
 }

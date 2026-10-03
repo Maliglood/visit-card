@@ -1,232 +1,368 @@
 :host {
     display: block;
     min-height: 100dvh;
+    background-color: #0b0e14;
 }
 
-/* Все дочерние элементы компонента считают padding внутри width */
 :host *,
 :host *::before,
 :host *::after {
     box-sizing: border-box;
 }
 
-/* Утилита: скрыть элемент, не удаляя его из разметки */
-.is-hidden {
-    display: none !important;
-}
-
-/* -------- Страница-обёртка -------- */
-
 .page {
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    background: #f4f5f7;
-    color: #1a1a1a;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-        'Helvetica Neue', Arial, sans-serif;
+    /* ФОН: Только кирпичная стена */
+    background-image: url('/images/bg-brick.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    padding-bottom: 80px;
+    /* Отступ для нижнего меню */
 }
 
-/* -------- Карточка по центру -------- */
-
+/* -------- Карточка (контейнер контента) -------- */
 .card {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 480px;
-    min-height: 100dvh;
+    min-height: calc(100dvh - 80px);
+    /* Высота минус нижнее меню */
     margin: 0 auto;
-    padding: 8px 20px 12px;
-    gap: 18px;
+    padding: 16px 20px;
+    flex: 1;
 }
 
-/* -------- Шапка -------- */
+/* -------- ВЕРХНЯЯ ЧАСТЬ -------- */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
 
-.profile {
+.logo img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    /* Свечение для логотипа, если нужно */
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
+}
+
+.categories-overlay {
+    max-width: 65%;
+    /* Чтобы оверлей не залезал на логотип */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.categories-overlay img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* Небольшая тень, чтобы текст читался на фоне стены */
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5));
+}
+
+/* -------- НИЖНЯЯ ЧАСТЬ -------- */
+.bottom-section {
+    margin-top: auto;
+    /* Это прижимает блок к низу */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    padding-top: 0;
+    gap: 20px;
+    margin-top: -75px;
 }
 
-.avatar {
+/* Неоновый заголовок */
+.hero {
+    margin-top: 10px;
+}
+
+.hero-title {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #ffffff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-.avatar img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.title {
+    flex-direction: column;
+    gap: 2px;
     margin: 0;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.25;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
     letter-spacing: -0.01em;
 }
 
-.subtitle {
-    margin: 0;
-    max-width: 280px;
-    font-size: 15px;
-    line-height: 1.4;
-    color: #6b7280;
+.title-white {
+    color: #ffffff;
+    /* Чёткая тень без размытия */
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
 }
 
-/* -------- Список кнопок -------- */
+.title-yellow {
+    color: #FFE033;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
+}
+
+.title-cyan {
+    color: #00E5FF;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
+}
+
+/* -------- Кнопка CTA -------- */
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 50px;
+    background: #FFE033;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 224, 51, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.cta-button:active {
+    transform: scale(0.97);
+}
+
+/* -------- Социальные сети -------- */
+.socials-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.socials-title {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
 
 .links {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .link {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 14px;
-    min-height: 56px;
-    padding: 12px 14px;
-    border-radius: 16px;
-    background: var(--accent, #333333);
-    color: #ffffff;
+    gap: 8px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-}
-
-.link:active {
-    transform: scale(0.97);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
-}
-
-.link:focus-visible {
-    outline: 3px solid #1a1a1a;
-    outline-offset: 3px;
+    color: #ffffff;
+    flex: 1;
 }
 
 .link__icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    transition: transform 0.2s ease, background 0.2s ease;
+    /* УБРАЛИ размытое свечение */
+    /* filter: drop-shadow(0 0 10px var(--accent)); */
+}
+
+.link__icon svg {
+    display: block;
+    /* Чёткие контуры иконки */
+    shape-rendering: geometricPrecision;
+}
+
+.link:active .link__icon {
+    transform: scale(0.92);
     background: rgba(255, 255, 255, 0.18);
 }
 
-.link__text {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex: 1 1 auto;
-    min-width: 0;
+.link__name {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.link__name {
+/* -------- Блок событий -------- */
+.events-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.events-header h2 {
+    margin: 0;
     font-size: 16px;
     font-weight: 600;
-    line-height: 1.2;
 }
 
-.link__subtitle {
+.events-link {
+    color: #00E5FF;
     font-size: 13px;
-    line-height: 1.3;
-    opacity: 0.85;
-}
-
-.link__arrow {
+    text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    opacity: 0.7;
+    gap: 4px;
 }
 
-/* -------- Подвал -------- */
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
-.footer {
+.event-date {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-top: auto;
-    padding-top: 12px;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background: #1A2B4C;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 8px 12px;
+    min-width: 55px;
 }
 
-.footer__note,
-.footer__disclaimer,
-.footer__copyright {
-    margin: 0;
+.event-day {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-month {
     font-size: 11px;
-    line-height: 1.35;
+    text-transform: uppercase;
+}
+
+.event-info {
+    flex: 1;
+}
+
+.event-info h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.event-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.3;
+}
+
+.event-arrow {
     color: #9ca3af;
 }
 
-.footer__note,
-.footer__disclaimer {
-    font-style: italic;
+/* -------- Нижнее меню -------- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(11, 14, 20, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+    z-index: 100;
 }
 
-.footer__copyright {
-    margin-top: 6px;
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    flex: 1;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+}
+
+.nav-item.active {
+    color: #FFE033;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-label {
+    font-size: 10px;
+    font-weight: 500;
 }
 
 /* -------- Планшеты и десктоп -------- */
-
 @media (min-width: 600px) {
     .card {
-        padding: 48px 24px 32px;
-        gap: 40px;
+        padding: 32px 24px;
     }
 
-    .title {
-        font-size: 28px;
-    }
-
-    .link {
-        min-height: 72px;
-        padding: 16px 20px;
+    .hero-title {
+        font-size: 36px;
     }
 
     .link__icon {
-        width: 44px;
-        height: 44px;
+        width: 64px;
+        height: 64px;
     }
 
     .link__name {
-        font-size: 17px;
-    }
-
-    .link__subtitle {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
 /* -------- Уважение к reduced-motion -------- */
-
 @media (prefers-reduced-motion: reduce) {
 
-    .link,
-    .link:active {
+    .cta-button,
+    .link__icon,
+    .nav-item {
         transition: none;
-        transform: none;
     }
 }
