@@ -392,3 +392,30 @@
         transition: none;
     }
 }
+
+@media (max-width: 580px) {
+    .bottom-section {
+        margin-top: -30px;
+    }
+
+    /* Разрешаем контейнеру быть шире */
+    .categories-overlay {
+        max-width: 78%;
+        margin-bottom: -35px;
+    }
+
+    /* И задаём картинке конкретную высоту */
+    .categories-overlay img {
+        height: 220px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: top right;
+    }
+
+    /* Логотип на мобилке обычно меньше — оверлею станет больше места */
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+}

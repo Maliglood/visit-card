@@ -35,9 +35,9 @@ interface EventItem {
 })
 export class Home {
   readonly links: readonly MessengerLink[] = [
-    { id: 'max', name: 'MAX', url: 'https://max.ru/join/IrZZDhsZZSYq55BRj9a9rCH7-z78oJOKn2kN4wIaBok', color: '#6E3BFF', icon: 'max' },
-    { id: 'vk', name: 'ВКонтакте', url: 'https://vk.ru/ragtime', color: '#0077FF', icon: 'vk' },
     { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/jazzragtime?stkn=YmFtcHlpbGh1c3lt', color: '#E1306C', icon: 'instagram' },
+    { id: 'vk', name: 'ВКонтакте', url: 'https://vk.ru/ragtime', color: '#0077FF', icon: 'vk' },
+    { id: 'max', name: 'MAX', url: 'https://max.ru/join/IrZZDhsZZSYq55BRj9a9rCH7-z78oJOKn2kN4wIaBok', color: '#6E3BFF', icon: 'max' },
     { id: 'telegram', name: 'Telegram', url: 'https://t.me/jazzragtime', color: '#229ED9', icon: 'telegram' },
   ];
 
