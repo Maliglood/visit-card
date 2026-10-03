@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 
 type NavIcon = 'home' | 'about' | 'schedule' | 'prices' | 'contacts';
 
@@ -18,6 +21,16 @@ interface NavItem {
   styleUrl: './app.scss',
 })
 export class App {
+  private readonly router = inject(Router);
+
+  readonly isHome = toSignal(
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      map((e) => e.urlAfterRedirects === '/' || e.urlAfterRedirects === ''),
+    ),
+    { initialValue: this.router.url === '/' }
+  );
+
   readonly navItems: readonly NavItem[] = [
     { id: 'home', name: 'Главная', icon: 'home', url: '/' },
     { id: 'about', name: 'О нас', icon: 'about', url: '/about' },
