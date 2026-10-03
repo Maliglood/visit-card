@@ -180,23 +180,29 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1.5px solid var(--accent);
-    color: var(--accent);
-    transition: transform 0.2s ease, background 0.2s ease;
-    /* УБРАЛИ размытое свечение */
-    /* filter: drop-shadow(0 0 10px var(--accent)); */
+    /* Фон — фирменный цвет соцсети (задаётся через --accent) */
+    background: var(--accent);
+    /* Лёгкая тень, чтобы кружок отделялся от стены */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease;
 }
 
 .link__icon svg {
     display: block;
-    /* Чёткие контуры иконки */
     shape-rendering: geometricPrecision;
+}
+
+.link__icon--instagram {
+    background: linear-gradient(45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%);
 }
 
 .link:active .link__icon {
     transform: scale(0.92);
-    background: rgba(255, 255, 255, 0.18);
 }
 
 .link__name {
