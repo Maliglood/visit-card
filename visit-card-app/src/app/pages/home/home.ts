@@ -23,7 +23,7 @@ interface EventItem {
   day: string;
   month: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 @Component({
@@ -50,9 +50,8 @@ export class Home {
   ];
 
   readonly upcomingEvent: EventItem = {
-    day: '12',
-    month: 'апр',
-    title: 'Открытый урок',
-    subtitle: 'Познакомьтесь со студией и преподавателями'
+    day: '18',
+    month: 'окт',
+    title: 'День открытых дверей',
   };
 }

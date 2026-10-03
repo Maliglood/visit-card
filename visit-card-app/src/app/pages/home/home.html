@@ -83,26 +83,22 @@
 
             <!-- Ближайшие события -->
             <section class="events-section">
-                <div class="events-header">
-                    <h2>Ближайшие события</h2>
-                    <a href="#" class="events-link">Смотреть все <span>→</span></a>
-                </div>
-                <div class="event-card">
+                <a href="#" class="event-card">
                     <div class="event-date">
                         <span class="event-day">{{ upcomingEvent.day }}</span>
                         <span class="event-month">{{ upcomingEvent.month }}</span>
                     </div>
                     <div class="event-info">
                         <h3>{{ upcomingEvent.title }}</h3>
-                        <p>{{ upcomingEvent.subtitle }}</p>
+                        <p *ngIf="upcomingEvent.subtitle">{{ upcomingEvent.subtitle }}</p>
                     </div>
                     <div class="event-arrow">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 18 15 12 9 6" />
                         </svg>
                     </div>
-                </div>
+                </a>
             </section>
 
         </div> <!-- Конец bottom-section -->
