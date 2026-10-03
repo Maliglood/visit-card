@@ -96,7 +96,13 @@
 .event-title-block {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    /* центрируем содержимое по горизонтали */
+    text-align: center;
     gap: 12px;
+    flex: 1;
+    /* занимает всё место между кнопкой и спейсером */
+    min-width: 0;
 }
 
 .event-title {
@@ -107,11 +113,15 @@
     color: #ffffff;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
     text-transform: uppercase;
+    text-align: center;
+    width: 100%;
 }
 
 .event-meta {
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* дату и время — тоже по центру */
     gap: 12px;
 }
 

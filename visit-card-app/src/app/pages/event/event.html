@@ -9,29 +9,27 @@
                     <polyline points="15 18 9 12 15 6" />
                 </svg>
             </a>
-            <span class="event-header__title">Событие</span>
+            <!-- Заголовок и дата -->
+            <div class="event-title-block">
+                <h1 class="event-title">{{ event.title }}</h1>
+
+                <div class="event-meta">
+                    <div class="meta-badge">
+                        <span class="meta-day">{{ event.day }}</span>
+                        <span class="meta-month">{{ event.month }}</span>
+                    </div>
+                    <div class="meta-info">
+                        <span class="meta-weekday">{{ event.weekday }}</span>
+                        <span class="meta-time">Начало в {{ event.time }}</span>
+                    </div>
+                </div>
+            </div>
             <span class="event-header__spacer"></span>
         </header>
 
         <!-- Вертикальная афиша -->
         <div class="poster">
             <img [src]="event.poster" [alt]="event.title" />
-        </div>
-
-        <!-- Заголовок и дата -->
-        <div class="event-title-block">
-            <h1 class="event-title">{{ event.title }}</h1>
-
-            <div class="event-meta">
-                <div class="meta-badge">
-                    <span class="meta-day">{{ event.day }}</span>
-                    <span class="meta-month">{{ event.month }}</span>
-                </div>
-                <div class="meta-info">
-                    <span class="meta-weekday">{{ event.weekday }}</span>
-                    <span class="meta-time">Начало в {{ event.time }}</span>
-                </div>
-            </div>
         </div>
 
         <!-- Анонс -->
