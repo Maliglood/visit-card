@@ -44,7 +44,7 @@ export class Home {
 
   readonly navItems: readonly NavItem[] = [
     { id: 'home', name: 'Главная', icon: 'home', url: '#', active: true },
-    { id: 'about', name: 'О нас', icon: 'about', url: '#' },
+    { id: 'about', name: 'О нас', icon: 'about', url: '/about' },
     { id: 'schedule', name: 'Расписание', icon: 'schedule', url: '#' },
     { id: 'prices', name: 'Цены', icon: 'prices', url: '#' },
     { id: 'contacts', name: 'Контакты', icon: 'contacts', url: '#' },

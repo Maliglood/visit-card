@@ -1,0 +1,33 @@
+<div class="page">
+    <main class="card">
+
+        <!-- Заголовок -->
+        <header class="about-header">
+            <h1 class="about-title">{{ about.title }}</h1>
+            <p class="about-subtitle">{{ about.subtitle }}</p>
+        </header>
+
+        <!-- Факты -->
+        <div class="about-facts">
+            @for (fact of about.facts; track fact.label) {
+            <div class="fact">
+                <span class="fact__value">{{ fact.value }}</span>
+                <span class="fact__label">{{ fact.label }}</span>
+            </div>
+            }
+        </div>
+
+        <!-- Фото -->
+        <div class="about-photo">
+            <img [src]="about.photo" alt="Студия джаз вокала Рэгтайм" />
+        </div>
+
+        <!-- Текст -->
+        <div class="about-text">
+            @for (paragraph of about.paragraphs; track paragraph) {
+            <p>{{ paragraph }}</p>
+            }
+        </div>
+
+    </main>
+</div>
