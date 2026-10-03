@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 type MessengerIcon = 'max' | 'instagram' | 'telegram' | 'vk';
 type NavIcon = 'home' | 'about' | 'schedule' | 'prices' | 'contacts';
@@ -29,7 +30,7 @@ interface EventItem {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
