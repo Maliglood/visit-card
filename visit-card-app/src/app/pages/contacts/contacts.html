@@ -1,0 +1,86 @@
+<div class="page">
+    <main class="card">
+
+        <!-- Заголовок -->
+        <header class="about-header">
+            <h1 class="about-title">Контакты</h1>
+        </header>
+
+        <!-- Руководители -->
+        @for (leader of leaders; track leader.id) {
+        <section class="leader">
+
+            <!-- Верх: фото слева, инфо справа -->
+            <div class="leader-top">
+                <div class="leader-avatar">
+                    <img [src]="leader.photo" [alt]="'Фото — ' + leader.name" (error)="onPhotoError($event)" />
+                </div>
+
+                <div class="leader-info">
+                    <h2 class="leader-name">{{ leader.name }}</h2>
+                    <p class="leader-role">{{ leader.role }}</p>
+                    <p class="leader-bio">{{ leader.bio }}</p>
+                </div>
+            </div>
+
+            <!-- Низ: контакты -->
+            <div class="leader-contacts">
+                @if (leader.phone) {
+                <a class="contact-chip" [href]="'tel:' + leader.phone.replace(/[^+\d]/g, '')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    {{ leader.phone }}
+                </a>
+                }
+
+                @if (leader.email) {
+                <a class="contact-chip" [href]="'mailto:' + leader.email">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-10 6L2 7" />
+                    </svg>
+                    {{ leader.email }}
+                </a>
+                }
+
+                @if (leader.telegram) {
+                <a class="contact-chip" [href]="leader.telegram" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 4.5 2.5 12l5 2 2 6 3.5-4.5 5.5 4z" />
+                        <path d="m7.5 14 10-7-6 9" />
+                    </svg>
+                    Telegram
+                </a>
+                }
+
+                @if (leader.whatsapp) {
+                <a class="contact-chip" [href]="leader.whatsapp" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z" />
+                    </svg>
+                    WhatsApp
+                </a>
+                }
+            </div>
+
+        </section>
+        }
+
+        <!-- Адрес -->
+        <section class="address">
+            <div class="about-text">
+                <p><strong>Адрес:</strong> {{ address.city }}, {{ address.street }}</p>
+                @if (address.entrance) {
+                <p><strong>Вход:</strong> {{ address.entrance }}</p>
+                }
+            </div>
+        </section>
+
+    </main>
+</div>

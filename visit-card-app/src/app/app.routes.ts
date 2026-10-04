@@ -17,6 +17,11 @@ export const routes: Routes = [
             import('./pages/event/event').then((m) => m.Event),
     },
     {
+        path: 'contacts',
+        loadComponent: () =>
+            import('./pages/contacts/contacts').then((m) => m.Contacts),
+    },
+    {
         path: '**',
         redirectTo: '',
     },
