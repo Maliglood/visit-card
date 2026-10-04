@@ -1,0 +1,53 @@
+<div class="page">
+    <main class="card">
+
+        <!-- Заголовок -->
+        <header class="about-header">
+            <h1 class="about-title">Расписание</h1>
+            <p class="about-subtitle">Составы студии «Рэгтайм»</p>
+        </header>
+
+        <!-- Карточки групп -->
+        <div class="groups">
+            @for (group of groups; track group.id) {
+            <article class="group" [class.group--solo]="group.solo" [style.--accent]="group.color">
+
+                <!-- Название группы -->
+                <div class="group-head">
+                    <span class="group-name">{{ group.name }}</span>
+                    @if (!group.solo) {
+                    <span class="group-dot" aria-hidden="true"></span>
+                    }
+                </div>
+
+                <!-- Дни недели -->
+                @if (group.days.length) {
+                <div class="group-days">
+                    @for (day of group.days; track day) {
+                    <span class="day-chip">{{ day }}</span>
+                    }
+                </div>
+                }
+
+                <!-- Время -->
+                @if (group.time) {
+                <div class="group-time">{{ group.time }}</div>
+                }
+
+                <!-- Особая заметка (Solo) -->
+                @if (group.note) {
+                <div class="group-note">
+                    <svg class="note-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <span>{{ group.note }}</span>
+                </div>
+                }
+
+            </article>
+            }
+        </div>
+    </main>
+</div>

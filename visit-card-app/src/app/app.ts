@@ -34,7 +34,7 @@ export class App {
   readonly navItems: readonly NavItem[] = [
     { id: 'home', name: 'Главная', icon: 'home', url: '/' },
     { id: 'about', name: 'О нас', icon: 'about', url: '/about' },
-    { id: 'schedule', name: 'Расписание', icon: 'schedule', url: '#' },
+    { id: 'schedule', name: 'Расписание', icon: 'schedule', url: '/schedule' },
     { id: 'contacts', name: 'Контакты', icon: 'contacts', url: '/contacts' },
   ];
 }

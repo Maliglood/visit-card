@@ -22,6 +22,11 @@ export const routes: Routes = [
             import('./pages/contacts/contacts').then((m) => m.Contacts),
     },
     {
+        path: 'schedule',
+        loadComponent: () =>
+            import('./pages/schedule/schedule').then((m) => m.Schedule),
+    },
+    {
         path: '**',
         redirectTo: '',
     },
